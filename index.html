@@ -212,6 +212,216 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script></p>
+
+
+<!-- 币安响应式图片广告开始 -->
+<style>
+  /* 广告容器基础样式：默认固定在右下角 */
+  #binance-img-ad {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 300px; /* 电脑端默认宽度 */
+    max-width: 85vw; /* 防止极窄屏幕溢出 */
+    z-index: 99999;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    background-color: #181a20;
+    border: 1px solid #f0b90b;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+
+  /* 鼠标悬停时的轻微上浮动效 */
+  #binance-img-ad:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(240, 185, 11, 0.25);
+  }
+
+  /* 跳转链接与图片自适应 */
+  #binance-ad-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    position: relative;
+    line-height: 0; /* 消除图片底部默认缝隙 */
+  }
+
+  #binance-ad-link img {
+    width: 100%;
+    height: auto; /* 高度随宽度自动等比例缩放 */
+    display: block;
+  }
+
+  /* 底部邀请码条 */
+  #binance-ad-ref {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background-color: #1e2329;
+    border-top: 1px solid rgba(240, 185, 11, 0.25);
+    color: #eaecef;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  #binance-ad-ref-label {
+    color: #b7bdc6;
+  }
+
+  #binance-ad-ref-code {
+    color: #f0b90b;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    background: rgba(240, 185, 11, 0.12);
+    border: 1px dashed rgba(240, 185, 11, 0.6);
+    border-radius: 4px;
+    padding: 1px 7px;
+    margin-left: 4px;
+  }
+
+  #binance-ad-copy-btn {
+    background-color: #f0b90b;
+    color: #181a20;
+    border: none;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  #binance-ad-copy-btn:hover {
+    background-color: #fcd535;
+  }
+
+  /* 右上角关闭按钮 */
+  #binance-ad-close {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+    transition: background-color 0.2s;
+  }
+
+  #binance-ad-close:hover {
+    background-color: rgba(240, 185, 11, 0.9);
+    color: #181a20;
+  }
+
+  /* 手机端自适应调整 (屏幕宽度小于 768px 时触发) */
+  @media screen and (max-width: 768px) {
+    #binance-img-ad {
+      width: 190px; /* 手机端自动缩小 */
+      bottom: 15px;
+      right: 15px;
+      border-radius: 8px;
+    }
+
+    #binance-ad-ref {
+      padding: 6px 8px;
+      font-size: 11px;
+    }
+
+    #binance-ad-ref-code {
+      font-size: 11px;
+      padding: 1px 5px;
+    }
+
+    #binance-ad-copy-btn {
+      padding: 2px 6px;
+      font-size: 10px;
+    }
+  }
+</style>
+
+<div id="binance-img-ad">
+  <!-- 关闭按钮 -->
+  <button id="binance-ad-close" title="关闭广告" onclick="closeBinanceAd(event)">×</button>
+
+  <!-- 广告点击跳转链接 -->
+  <a id="binance-ad-link" href="https://www.bsmkweb.net/join?ref=A6A88" target="_blank" rel="noopener noreferrer">
+    <!-- 请将下方的 src 替换为您自己的图片链接 (.jpg / .png / .webp / .gif) -->
+    <img src="bian.jpg" alt="币安注册广告（邀请码：A6A88）">
+  </a>
+
+  <!-- 邀请码展示与复制栏 -->
+  <div id="binance-ad-ref">
+    <div>
+      <span id="binance-ad-ref-label">福利邀请码：</span>
+      <span id="binance-ad-ref-code">A6A88</span>
+    </div>
+    <button id="binance-ad-copy-btn" type="button" onclick="copyBinanceRefCode(event)">复制</button>
+  </div>
+</div>
+
+<script>
+  function closeBinanceAd(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    var adContainer = document.getElementById('binance-img-ad');
+    if (adContainer) {
+      adContainer.style.display = 'none';
+    }
+  }
+
+  function copyBinanceRefCode(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    var code = 'A6A88';
+    var btn = document.getElementById('binance-ad-copy-btn');
+
+    function showCopied() {
+      if (!btn) return;
+      var originalText = btn.textContent;
+      btn.textContent = '已复制';
+      setTimeout(function () {
+        btn.textContent = originalText;
+      }, 1500);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(showCopied).catch(function () {
+        fallbackCopy(code, showCopied);
+      });
+    } else {
+      fallbackCopy(code, showCopied);
+    }
+  }
+
+  function fallbackCopy(text, callback) {
+    var textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      if (callback) callback();
+    } catch (e) {}
+    document.body.removeChild(textarea);
+  }
+</script>
+<!-- 币安响应式图片广告结束 -->
+
+        
     </div>
 </body>
 </html>
